@@ -1,3 +1,11 @@
+Obs: Svelte 5 is new and libraries are not updated yet. This project is a test to see if it works. 
+
+To force install the dependencies, run the following command:
+
+```bash
+npm install --force
+```
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
