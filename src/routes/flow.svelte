@@ -84,7 +84,7 @@
 	edges.subscribe((value) => saveToLocalStorage('edges', value));
 
 	export const nodeTypes: NodeTypes = {
-		family: FamilyNode
+		family: FamilyNode as any // Svelte 5 $props changed type
 	};
 
   let width = $state<number>(0);
