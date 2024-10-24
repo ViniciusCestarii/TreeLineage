@@ -33,6 +33,8 @@
   }
 </script>
 
+<!-- svelte-ignore a11y_no_static_element_interactions -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
 <div
   style="top: {top}px; left: {left}px; right: {right}px; bottom: {bottom}px;"
   class="context-menu"
