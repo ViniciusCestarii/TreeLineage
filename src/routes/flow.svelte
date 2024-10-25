@@ -17,7 +17,7 @@
 	import { menuStore } from './menu-store';
 	import { browser } from '$app/environment';
 	import { viewport as viewportStore} from './state.svelte';
-	import { loadFromLocalStorage, saveToLocalStorage } from './utils';
+	import { getWindowHeight, getWindowWidth, loadFromLocalStorage, saveToLocalStorage } from './utils';
 
 	const initialNodes: FamilyNodeType[] = loadFromLocalStorage('nodes', [
 		{
@@ -60,7 +60,7 @@
 		return { x: centerX, y: centerY, zoom };
 	}
 
-	const initialViewport = loadFromLocalStorage('viewport', calculateInitialViewport(initialNodes[2], browser ? window.innerWidth : 0, browser ? window.innerHeight : 0));
+	const initialViewport = loadFromLocalStorage('viewport', calculateInitialViewport(initialNodes[2], getWindowWidth(), getWindowHeight()));
 
 	function handlePaneClick() {
 		menuStore.close();

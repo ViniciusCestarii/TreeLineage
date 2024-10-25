@@ -2,8 +2,14 @@ import { browser } from "$app/environment";
 import { viewport } from "./state.svelte";
 import type { FamilyNodeType } from "./types";
 
+export const getWindowWidth = () => browser ? window.innerWidth : 0;
+export const getWindowHeight = () => browser ? window.innerHeight : 0;
+
 export const generateNodeFamily = (node?: Partial<FamilyNodeType>): FamilyNodeType => {
-  console.log(viewport.x, viewport.y)
+  const windowWidth = getWindowWidth()
+  const windowHeight = getWindowHeight()
+
+  const zoomIndex = 1 / viewport.zoom;
   return {
     id: Math.random().toString(36).slice(2, 9),
     type: "family",
@@ -12,8 +18,8 @@ export const generateNodeFamily = (node?: Partial<FamilyNodeType>): FamilyNodeTy
       name: "",
     },
     position: {
-      x: -viewport.x +90,
-      y: -viewport.y +44
+      x: -viewport.x * zoomIndex + windowWidth / 2 * zoomIndex - 89,
+      y: -viewport.y * zoomIndex + windowHeight / 2 * zoomIndex - 90,
     },
     ...node,
   }
