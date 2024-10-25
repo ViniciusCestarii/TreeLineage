@@ -2,6 +2,7 @@
 	import { SvelteFlowProvider } from '@xyflow/svelte';
 	import Flow from './flow.svelte';
 	import { browser } from '$app/environment';
+	import Header from './header.svelte';
 </script>
 
 <svelte:head>
@@ -13,5 +14,6 @@
 </svelte:head>
 
 <SvelteFlowProvider>
+	<Header />
 	<Flow />
 </SvelteFlowProvider>

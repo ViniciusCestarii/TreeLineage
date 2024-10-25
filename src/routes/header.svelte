@@ -1,8 +1,10 @@
+<script>
+	import CreateFamilyNodeButton from "./create-family-node-button.svelte";
+
+</script>
 <header>
   <h1>TreeLineage</h1>
-  <button>
-    Add new Person +
-  </button>
+  <CreateFamilyNodeButton />
   <button>
     Share
   </button>

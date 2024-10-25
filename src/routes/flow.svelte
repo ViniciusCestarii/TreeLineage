@@ -16,17 +16,8 @@
 	import ContextMenu from './context-menu.svelte';
 	import { menuStore } from './menu-store';
 	import { browser } from '$app/environment';
-
-	function saveToLocalStorage(key: string, value: any) {
-		if (browser) {
-			localStorage.setItem(key, JSON.stringify(value));
-		}
-	}
-
-	function loadFromLocalStorage<T>(key: string, fallback: T): T {
-		const savedData = browser ? localStorage.getItem(key) : undefined;
-		return savedData ? JSON.parse(savedData) : fallback;
-	}
+	import { viewport as viewportStore} from './state.svelte';
+	import { loadFromLocalStorage, saveToLocalStorage } from './utils';
 
 	const initialNodes: FamilyNodeType[] = loadFromLocalStorage('nodes', [
 		{
@@ -79,7 +70,12 @@
 	let edges = writable<Edge[]>(initialEdges);
 	const viewport = writable(initialViewport)
 
-	viewport.subscribe((value) => saveToLocalStorage('viewport', value));
+	viewport.subscribe((value) => {
+		saveToLocalStorage('viewport', value)
+		viewportStore.x = value.x;
+		viewportStore.y = value.y;
+		viewportStore.zoom = value.zoom;
+	});
 	nodes.subscribe((value) => saveToLocalStorage('nodes', value));
 	edges.subscribe((value) => saveToLocalStorage('edges', value));
 
