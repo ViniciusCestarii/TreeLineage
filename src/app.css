@@ -1,11 +1,20 @@
+:root {
+  --primary: #4fcea2;
+  --foreground: #080808;
+  --radius: 5px;
+}
+
 body {
   margin: 0;
   font-family: sans-serif;
+  color: var(--foreground);
 }
 
 * {
   box-sizing: border-box
 }
+
+/* --- resets --- */
 
 html, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
