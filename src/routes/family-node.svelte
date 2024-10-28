@@ -2,10 +2,13 @@
 	import { Handle, Position, type NodeProps, useSvelteFlow } from '@xyflow/svelte';
 	import type { FamilyNodeType } from './types';
 	import { Button } from '$lib/components/ui/button';
+	import PersonIcon from './person-icon.svelte';
 
 	interface FamilyNodeProps extends NodeProps<FamilyNodeType> {}
 
-	const { data, id }: FamilyNodeProps = $props();
+	const props: FamilyNodeProps = $props();
+
+	const { data, id } = props;
 
 	let editMode = $state(false);
 
@@ -30,25 +33,7 @@
 	{/if}
 
 	<div class="size-20 mx-auto">
-		{#if data.gender === 'M'}
-			<lord-icon
-				src="https://cdn.lordicon.com/shcfcebj.json"
-				trigger="hover"
-				state="hover-jump"
-				colors="primary:#545454,secondary:#545454"
-				class="h-full w-full"
-				>
-			</lord-icon>
-		{:else}
-			<lord-icon
-				src="https://cdn.lordicon.com/ugejbvui.json"
-				trigger="hover"
-				state="hover-jump"
-				colors="primary:#545454,secondary:#545454"
-				class="h-full w-full"
-				>
-			</lord-icon>
-		{/if}
+		<PersonIcon {...data} />
 	</div>
 	<Button
 		class="absolute right-0 top-0 z-10"

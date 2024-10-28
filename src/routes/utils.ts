@@ -16,7 +16,7 @@ export const generateNodeFamily = (node?: Partial<FamilyNodeType>): FamilyNodeTy
     id: generateId(),
     type: "family",
     data: {
-      gender: "M",
+      gender: "U",
       name: "",
     },
     position: {
