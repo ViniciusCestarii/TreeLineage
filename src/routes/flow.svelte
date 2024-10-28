@@ -15,8 +15,9 @@
 	import type { FamilyNodeType } from './types';
 	import ContextMenu from './context-menu.svelte';
 	import { menuStore } from './menu-store';
-	import { viewport as viewportStore} from './state.svelte';
+	import { editDialog, viewport as viewportStore} from './state.svelte';
 	import { getWindowHeight, getWindowWidth, loadFromLocalStorage, saveToLocalStorage } from './utils';
+	import EditDialog from './edit-dialog.svelte';
 
 	const initialNodes: FamilyNodeType[] = loadFromLocalStorage('nodes', [
 		{
@@ -63,6 +64,7 @@
 
 	function handlePaneClick() {
 		menuStore.close();
+		editDialog.id = null;
 	}
 
 	let nodes = writable<FamilyNodeType[]>(initialNodes);
@@ -109,13 +111,16 @@
 		<Background variant={BackgroundVariant.Dots} />
 		{#if $menuStore}
 			<ContextMenu
-				onClick={handlePaneClick}
+				onClick={menuStore.close}
 				id={$menuStore.id}
 				top={$menuStore.top}
 				left={$menuStore.left}
 				right={$menuStore.right}
 				bottom={$menuStore.bottom}
 			/>
+		{/if}
+		{#if editDialog.id}
+			<EditDialog id={editDialog.id} onclose={() => editDialog.id = null} />
 		{/if}
 	</SvelteFlow>
 </div>

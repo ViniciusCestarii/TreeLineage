@@ -3,6 +3,7 @@
 	import { generateId } from './utils';
 	import { Button } from '$lib/components/ui/button';
 	import { Separator } from '$lib/components/ui/separator';
+	import { editDialog } from './state.svelte';
 	interface NodeContextMenuProps {
 		id: string;
 		top: number | undefined;
@@ -36,6 +37,10 @@
 		$nodes = $nodes.filter((node) => node.id !== id);
 		$edges = $edges.filter((edge) => edge.source !== id && edge.target !== id);
 	}
+
+  function editNode() {
+    editDialog.id = id;
+  }
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -49,6 +54,8 @@
   <Button variant="ghost" class="w-full font-normal justify-start" size="sm" {onclick}>{text}</Button>
   {/snippet}
     {@render menuItem("Duplicate", duplicateNode)}
+    {@render menuItem("Edit", editNode)}
+    <Separator />
     {@render menuItem("Delete", deleteNode)}
     <Separator />
     <p style="margin: 0.5em;">

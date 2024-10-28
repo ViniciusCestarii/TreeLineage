@@ -1,17 +1,36 @@
 <script lang="ts">
 	import { useSvelteFlow } from '@xyflow/svelte';
-	import { genderArray, type FamilyNodeType } from './types';
+	import { genderArray, type FamilyNodeDataType, type FamilyNodeType } from './types';
 	import { RadioGroup, RadioGroupItem } from '$lib/components/ui/radio-group';
 	import PersonIcon from './person-icon.svelte';
 	import { cn } from '$lib/utils';
 
-	interface FamilyNodeEditFormProps extends Pick<FamilyNodeType, 'id' | 'data'> {
+	interface FamilyNodeEditFormProps extends Pick<FamilyNodeType, 'id'> {
 		onsubmit: (evt: Event) => void;
 	}
 
-	const { data, id, onsubmit }: FamilyNodeEditFormProps = $props();
+	const { id, onsubmit }: FamilyNodeEditFormProps = $props();
 
-	const { updateNodeData } = useSvelteFlow();
+	const { updateNodeData, getNode } = useSvelteFlow();
+
+	$effect(() => {
+		const node = getNode(id);
+		if (!node) {
+			throw new Error(`Node with id ${id} not found`);
+		}
+
+		data = node.data as FamilyNodeDataType;
+	});
+
+	const initialData = getNode(id)!.data as FamilyNodeDataType;
+
+	let data = $state(initialData);
+
+	
+	const updateData = (updatedData: Partial<FamilyNodeDataType>) => {
+		data = { ...data, ...updatedData };
+		updateNodeData(id, updatedData);
+	};
 </script>
 
 <form {onsubmit} class="flex flex-col items-center">
@@ -19,8 +38,8 @@
 		class="flex"
 		value={data.gender}
 		onValueChange={(value) =>
-			updateNodeData(id, {
-				gender: value
+			updateData({
+				gender: value as FamilyNodeDataType["gender"]
 			})}
 	>
 		{#each genderArray as gender}
