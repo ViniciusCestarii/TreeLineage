@@ -6,10 +6,12 @@
 		MiniMap,
 		BackgroundVariant,
 		type Edge,
+		type ColorMode,
 		Controls,
 	} from '@xyflow/svelte';
 
 	import '@xyflow/svelte/dist/style.css';
+	import { theme, mode } from 'mode-watcher';
 	import { type FamilyNodeType, nodeTypes } from './types';
 	import ContextMenu from './context-menu.svelte';
 	import { menuStore } from './menu-store';
@@ -40,6 +42,7 @@
 
 	let width = $state<number>(0);
 	let height = $state<number>(0);
+	$inspect($mode)
 </script>
 
 <svelte:window />
@@ -50,6 +53,7 @@
 		{edges}
 		{nodeTypes}
 		{viewport}
+		colorMode={$mode ?? "light"}
 		ondelete={(deleted) => {
 			deleted.nodes.some(node => node.id == editDialog.id) && (editDialog.id = null);
 		}}
