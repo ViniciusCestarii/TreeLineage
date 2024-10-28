@@ -19,7 +19,7 @@
 		variant="outline"
 		size="icon-xs"
 		aria-label="edit person {data.name}"
-		onclick={() => (editDialog.id = id)}
+		onclick={() => editDialog.id === id ? editDialog.id = null : editDialog.id = id}
 	>
 		<lord-icon
 			src="https://cdn.lordicon.com/exymduqj.json"

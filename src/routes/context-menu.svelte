@@ -25,7 +25,7 @@
 				...node,
 				id: generateId(),
 				position: {
-					x: node.position.x,
+					x: node.position.x + 50,
 					y: node.position.y + 50
 				}
 			});
