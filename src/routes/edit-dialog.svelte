@@ -36,5 +36,5 @@
 		animation="hover-cross-1"
 		colors="primary:#545454,secondary:#545454"
 		class="h-full w-full"
-	/>
+	></lord-icon>
 </Button>

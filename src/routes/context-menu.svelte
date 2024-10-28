@@ -20,7 +20,7 @@
 	const nodes = useNodes();
 	const edges = useEdges();
 
-	const { updateNode } = useSvelteFlow();
+	const { updateNode, deleteElements } = useSvelteFlow();
 
 	function duplicateNode() {
 		const node = $nodes.find((node) => node.id === id);
@@ -40,8 +40,14 @@
 	}
 
 	function deleteNode() {
-		$nodes = $nodes.filter((node) => node.id !== id);
-		$edges = $edges.filter((edge) => edge.source !== id && edge.target !== id);
+		const nodeToDelete = $nodes.filter((node) => node.id === id);
+		const edgesToDelete = $edges.filter((edge) => edge.source === id && edge.target === id);
+
+		deleteElements({ nodes: nodeToDelete, edges: edgesToDelete });
+
+		if (editDialog.id === id) {
+			editDialog.id = null;
+		}
 	}
 
 	function editNode() {
