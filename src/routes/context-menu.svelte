@@ -4,6 +4,8 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Separator } from '$lib/components/ui/separator';
 	import { editDialog } from './state.svelte';
+  import { useSvelteFlow } from '@xyflow/svelte';
+
 	interface NodeContextMenuProps {
 		id: string;
 		top: number | undefined;
@@ -18,17 +20,21 @@
 	const nodes = useNodes();
 	const edges = useEdges();
 
+  const { updateNode } = useSvelteFlow();
+
 	function duplicateNode() {
 		const node = $nodes.find((node) => node.id === id);
 		if (node) {
 			$nodes.push({
 				...node,
+        selected: true,
 				id: generateId(),
 				position: {
 					x: node.position.x + 50,
 					y: node.position.y + 50
 				}
 			});
+      updateNode(id, { selected: false });
 		}
 		$nodes = $nodes;
 	}

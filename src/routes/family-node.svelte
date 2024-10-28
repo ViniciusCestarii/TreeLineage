@@ -4,13 +4,16 @@
 	import { Button } from '$lib/components/ui/button';
 	import PersonIcon from './person-icon.svelte';
 	import { editDialog } from './state.svelte';
+	import { cn } from '$lib/utils';
 
 	interface FamilyNodeProps extends NodeProps<FamilyNodeType> {}
 
-	const { data, id }: FamilyNodeProps = $props();
+	const { data, selected, id }: FamilyNodeProps = $props();
 </script>
 
-<div class="relative flex w-40 flex-col gap-1 border border-border bg-background rounded-md group p-2">
+<div class={cn("relative flex w-40 flex-col gap-1 border border-border bg-background rounded-md group p-2",
+	selected && "border-red-600"
+)}>
 	<div class="mx-auto size-20">
 		<PersonIcon {...data} />
 	</div>

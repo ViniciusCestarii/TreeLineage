@@ -50,6 +50,9 @@
 		{edges}
 		{nodeTypes}
 		{viewport}
+		ondelete={(deleted) => {
+			deleted.nodes.some(node => node.id == editDialog.id) && (editDialog.id = null);
+		}}
 		on:nodecontextmenu={({ detail: { event, node } }) => {
 			const hasCoords = 'clientX' in event;
 			if (!hasCoords) {

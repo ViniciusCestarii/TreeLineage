@@ -58,7 +58,7 @@
 	<input
 		id="name-{id}"
 		placeholder="name"
-		value={data.name}
+		bind:value={data.name}
 		oninput={(evt) => updateNodeData(id, { name: evt.currentTarget.value })}
 	/>
 </form>
