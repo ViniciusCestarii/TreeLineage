@@ -1,7 +1,7 @@
 <script lang="ts">
   import { useNodes } from '@xyflow/svelte';
   import { generateNodeFamily } from './utils';
-	import Button from '$lib/components/button.svelte';
+	import { Button } from '$lib/components/ui/button';
 
   const nodes = useNodes();
 

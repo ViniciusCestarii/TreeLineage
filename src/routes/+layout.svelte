@@ -1,7 +1,5 @@
 <script>
-  import "../app.css";
-	import Header from "./header.svelte";
-
+  import "../app.css";  
   let { children } = $props();
 </script>
 
