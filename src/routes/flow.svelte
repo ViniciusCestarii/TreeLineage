@@ -89,7 +89,7 @@
 
 <svelte:window />
 
-<div class="wrapper" bind:clientWidth={width} bind:clientHeight={height}>
+<div class="w-[100dvw] h-[100dvh]" bind:clientWidth={width} bind:clientHeight={height}>
 	<SvelteFlow
 		{nodes}
 		{edges}
@@ -120,10 +120,3 @@
 		{/if}
 	</SvelteFlow>
 </div>
-
-<style>
-	.wrapper {
-		height: 100dvh;
-		width: 100dvw;
-	}
-</style>

@@ -1,23 +1,12 @@
 <script>
+	import { Button } from "$lib/components/ui/button";
 	import CreateFamilyNodeButton from "./create-family-node-button.svelte";
 
 </script>
-<header>
+<header class="fixed top-0 z-40 flex justify-between w-full px-4 py-2">
   <h1>TreeLineage</h1>
   <CreateFamilyNodeButton />
-  <button>
+  <Button>
     Share
-  </button>
+  </Button>
 </header>
-
-<style>
-  header {
-    position: fixed;
-    top: 0;
-    z-index: 10;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0.5rem 1rem;
-  }
-</style>

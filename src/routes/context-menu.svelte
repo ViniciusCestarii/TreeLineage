@@ -37,7 +37,7 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <div
   style="top: {top}px; left: {left}px; right: {right}px; bottom: {bottom}px;"
-  class="context-menu"
+  class="absolute z-10 border border-border rounded-md bg-background"
   onclick={onClick}
 >
   <p style="margin: 0.5em;">
@@ -48,13 +48,6 @@
 </div>
 
 <style>
-  .context-menu {
-    background: white;
-    border-style: solid;
-    box-shadow: 10px 19px 20px rgba(0, 0, 0, 10%);
-    position: absolute;
-    z-index: 10;
-  }
 
   .context-menu button {
     border: none;

@@ -1,37 +1,43 @@
 <script lang="ts">
 	import { Handle, Position, type NodeProps, useSvelteFlow } from '@xyflow/svelte';
 	import type { FamilyNodeType } from './types';
+	import { Button } from '$lib/components/ui/button';
 
 	interface FamilyNodeProps extends NodeProps<FamilyNodeType> {}
 
 	const { data, id }: FamilyNodeProps = $props();
 
-	let editMode = $state(false)
+	let editMode = $state(false);
 
 	const { updateNodeData } = useSvelteFlow();
 </script>
 
-<div class="container">
+<div class="flex flex-col gap-1 relative w-36">
 	{#if editMode}
-	<div role="presentation" class="edit-menu">
-		<input
-		id="name-{id}"
-		placeholder="name"
-		value={data.name}
-		oninput={(evt) => updateNodeData(id, { name: evt.currentTarget.value })}
-	/>
-	</div>
+		<div role="presentation" class="absolute top-0 left-full">
+			<form onsubmit={(e) => {
+				e.preventDefault();
+				editMode = false;
+			}}>
+				<input
+					id="name-{id}"
+					placeholder="name"
+					value={data.name}
+					oninput={(evt) => updateNodeData(id, { name: evt.currentTarget.value })}
+				/>
+			</form>
+		</div>
 	{/if}
 
-	<div class="icon-container">
+	<div class="size-20 mx-auto">
 		{#if data.gender === 'M'}
 			<lord-icon
 				src="https://cdn.lordicon.com/shcfcebj.json"
 				trigger="hover"
 				state="hover-jump"
 				colors="primary:#545454,secondary:#545454"
-				style="width:100%;height:100%"
-			>
+				class="h-full w-full"
+				>
 			</lord-icon>
 		{:else}
 			<lord-icon
@@ -39,56 +45,30 @@
 				trigger="hover"
 				state="hover-jump"
 				colors="primary:#545454,secondary:#545454"
-				style="width:100%;height:100%"
-			>
+				class="h-full w-full"
+				>
 			</lord-icon>
 		{/if}
 	</div>
-	<button class="edit-button" aria-label="edit person" onclick={() => editMode = !editMode}>
+	<Button
+		class="absolute right-0 top-0 z-10"
+		variant="outline"
+		size="icon-xs"
+		aria-label="edit person {data.name}"
+		onclick={() => (editMode = !editMode)}
+	>
 		<lord-icon
-    src="https://cdn.lordicon.com/exymduqj.json"
-    trigger="hover"
-    state="hover-line"
-		colors="primary:#545454,secondary:#545454"
-    style="width:100%;height:100%">
-</lord-icon>	
-</button>
-	<h2>
+			src="https://cdn.lordicon.com/exymduqj.json"
+			trigger="hover"
+			state="hover-line"
+			colors="primary:#545454,secondary:#545454"
+			class="h-full w-full"
+		>
+		</lord-icon>
+	</Button>
+	<h2 class="text-center">
 		{data.name}
 	</h2>
 	<Handle type="target" position={Position.Top} />
 	<Handle type="source" position={Position.Bottom} />
 </div>
-
-<style>
-	.container {
-		display: flex;
-		flex-direction: column;
-		gap: 0.25rem;
-		position: relative;
-		width: 10rem;
-	}
-
-	.icon-container {
-		width: 5rem;
-		height: 5rem;
-		margin: 0 auto;
-	}
-
-	.edit-button {
-		position: absolute;
-		top: 0;
-		right: 0;
-		z-index: 100;
-		width: 2rem;
-		aspect-ratio: 1 / 1;
-		padding: 0;
-		margin: 0;
-	}
-
-	.edit-menu {
-		position: absolute;
-		top: 0;
-		left: 100%;
-	}
-</style>
