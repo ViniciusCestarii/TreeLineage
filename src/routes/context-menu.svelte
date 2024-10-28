@@ -1,63 +1,57 @@
 <script lang="ts">
-  import { useEdges, useNodes } from '@xyflow/svelte';
+	import { useEdges, useNodes } from '@xyflow/svelte';
+	import { generateId } from './utils';
+	import { Button } from '$lib/components/ui/button';
+	import { Separator } from '$lib/components/ui/separator';
+	interface NodeContextMenuProps {
+		id: string;
+		top: number | undefined;
+		left: number | undefined;
+		right: number | undefined;
+		bottom: number | undefined;
+		onClick: () => void;
+	}
 
-  export let onClick: () => void;
-  export let id: string;
-  export let top: number | undefined;
-  export let left: number | undefined;
-  export let right: number | undefined;
-  export let bottom: number | undefined;
+	const { bottom, id, left, onClick, right, top }: NodeContextMenuProps = $props();
 
-  const nodes = useNodes();
-  const edges = useEdges();
+	const nodes = useNodes();
+	const edges = useEdges();
 
-  function duplicateNode() {
-    const node = $nodes.find((node) => node.id === id);
-    if (node) {
-      $nodes.push({
-        ...node,
-        // You should use a better id than this in production
-        id: `${id}-copy${Math.random()}`,
-        position: {
-          x: node.position.x,
-          y: node.position.y + 50
-        }
-      });
-    }
-    $nodes = $nodes;
-  }
+	function duplicateNode() {
+		const node = $nodes.find((node) => node.id === id);
+		if (node) {
+			$nodes.push({
+				...node,
+				id: generateId(),
+				position: {
+					x: node.position.x,
+					y: node.position.y + 50
+				}
+			});
+		}
+		$nodes = $nodes;
+	}
 
-  function deleteNode() {
-    $nodes = $nodes.filter((node) => node.id !== id);
-    $edges = $edges.filter((edge) => edge.source !== id && edge.target !== id);
-  }
+	function deleteNode() {
+		$nodes = $nodes.filter((node) => node.id !== id);
+		$edges = $edges.filter((edge) => edge.source !== id && edge.target !== id);
+	}
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <!-- svelte-ignore a11y_click_events_have_key_events -->
-<div
-  style="top: {top}px; left: {left}px; right: {right}px; bottom: {bottom}px;"
-  class="absolute z-10 border border-border rounded-md bg-background"
-  onclick={onClick}
->
-  <p style="margin: 0.5em;">
-    <small>node: {id}</small>
-  </p>
-  <button onclick={duplicateNode}>duplicate</button>
-  <button onclick={deleteNode}>delete</button>
-</div>
-
-<style>
-
-  .context-menu button {
-    border: none;
-    display: block;
-    padding: 0.5em;
-    text-align: left;
-    width: 100%;
-  }
-
-  .context-menu button:hover {
-    background: white;
-  }
-</style>
+	<div
+		style="top: {top}px; left: {left}px; right: {right}px; bottom: {bottom}px;"
+		class="absolute z-10 rounded-md border border-border bg-background"
+		onclick={onClick}
+	>
+  {#snippet menuItem(text: string, onclick: () => void)}
+  <Button variant="ghost" class="w-full font-normal justify-start" size="sm" {onclick}>{text}</Button>
+  {/snippet}
+    {@render menuItem("Duplicate", duplicateNode)}
+    {@render menuItem("Delete", deleteNode)}
+    <Separator />
+    <p style="margin: 0.5em;">
+			<small>Node: {id}</small>
+		</p>
+	</div>

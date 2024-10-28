@@ -34,8 +34,8 @@
 	},
 	"dependencies": {
 		"@xyflow/svelte": "^0.1.21",
-		"bits-ui": "^0.21.16",
 		"clsx": "^2.1.1",
+		"bits-ui": "^1.0.0-next.30",
 		"tailwind-variants": "^0.2.1",
 		"tailwindcss-animate": "^1.0.7"
 	}

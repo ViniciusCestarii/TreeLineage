@@ -5,13 +5,15 @@ import type { FamilyNodeType } from "./types";
 export const getWindowWidth = () => browser ? window.innerWidth : 0;
 export const getWindowHeight = () => browser ? window.innerHeight : 0;
 
+export const generateId = () => Math.random().toString(36).slice(2, 9);
+
 export const generateNodeFamily = (node?: Partial<FamilyNodeType>): FamilyNodeType => {
   const windowWidth = getWindowWidth()
   const windowHeight = getWindowHeight()
 
   const zoomIndex = 1 / viewport.zoom;
   return {
-    id: Math.random().toString(36).slice(2, 9),
+    id: generateId(),
     type: "family",
     data: {
       gender: "M",

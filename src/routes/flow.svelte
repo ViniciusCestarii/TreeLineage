@@ -15,7 +15,6 @@
 	import type { FamilyNodeType } from './types';
 	import ContextMenu from './context-menu.svelte';
 	import { menuStore } from './menu-store';
-	import { browser } from '$app/environment';
 	import { viewport as viewportStore} from './state.svelte';
 	import { getWindowHeight, getWindowWidth, loadFromLocalStorage, saveToLocalStorage } from './utils';
 
