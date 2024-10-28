@@ -26,7 +26,6 @@
 
 	let data = $state(initialData);
 
-	
 	const updateData = (updatedData: Partial<FamilyNodeDataType>) => {
 		data = { ...data, ...updatedData };
 		updateNodeData(id, updatedData);
@@ -39,7 +38,7 @@
 		value={data.gender}
 		onValueChange={(value) =>
 			updateData({
-				gender: value as FamilyNodeDataType["gender"]
+				gender: value as FamilyNodeDataType['gender']
 			})}
 	>
 		{#each genderArray as gender}

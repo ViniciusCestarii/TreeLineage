@@ -1,4 +1,4 @@
-Obs: Svelte 5 is new and libraries are not updated yet. This project is a test to see if it works. 
+Obs: Svelte 5 is new and libraries are not updated yet. This project is a test to see if it works.
 
 To force install the dependencies, run the following command:
 

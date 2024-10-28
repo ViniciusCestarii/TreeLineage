@@ -13,7 +13,7 @@
 
 <div
 	role="presentation"
-	class="absolute z-40 top-[4.5rem] left-[50%] -translate-x-[50%] rounded-md border border-border bg-background p-1"
+	class="absolute left-[50%] top-[4.5rem] z-40 -translate-x-[50%] rounded-md border border-border bg-background p-1"
 >
 	<FamilyNodeEditForm
 		{id}
@@ -24,7 +24,7 @@
 	/>
 </div>
 <Button
-	class="absolute top-14 left-[50%] -translate-x-[50%] z-50 size-6 rounded-full bg-background"
+	class="absolute left-[50%] top-14 z-50 size-6 -translate-x-[50%] rounded-full bg-background"
 	variant="ghost"
 	size="icon-xs"
 	aria-label="close edit menu"

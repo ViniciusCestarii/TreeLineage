@@ -8,8 +8,8 @@
 
 	function duplicateNode() {
 		const nodeToPush = generateNodeFamily({ selected: true });
-	  const diselectedNodes = $nodes.map((node) => ({ ...node, selected: false }));
-	  $nodes = [...diselectedNodes, nodeToPush];
+		const diselectedNodes = $nodes.map((node) => ({ ...node, selected: false }));
+		$nodes = [...diselectedNodes, nodeToPush];
 		editDialog.id = nodeToPush.id;
 	}
 </script>
