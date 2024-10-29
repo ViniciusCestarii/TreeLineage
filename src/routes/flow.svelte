@@ -50,7 +50,8 @@
 	let height = $state<number>(0);
 
 	const defaultEdgeOptions: Partial<Edge> = {
-		type: 'straight'
+		type: 'straight',
+    style: 'stroke-width: 2px; margin-top: 1rem'
 	};
 </script>
 
@@ -64,6 +65,7 @@
 		{viewport}
 		maxZoom={2}
 		minZoom={0.15}
+		connectionLineStyle="stroke-width: 2px;"
 		{defaultEdgeOptions}
 		colorMode={$mode ?? 'light'}
 		ondelete={(deleted) => {

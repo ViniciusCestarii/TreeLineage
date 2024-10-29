@@ -48,7 +48,7 @@
 	<Handle
 		type="target"
 		position={Position.Top}
-		class="!size-10 !rounded-md !border-none !bg-transparent"
+		class="!size-10 !rounded-md !border-none !bg-transparent mt-4"
 	/>
 	<Handle
 		type="source"
