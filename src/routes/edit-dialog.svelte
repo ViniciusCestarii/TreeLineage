@@ -4,6 +4,7 @@
 	import LordIcon from '$lib/components/ui/lord-icon.svelte';
 	import FamilyNodeEditForm from './family-node-edit-form.svelte';
 	import type { FamilyNodeType } from './types';
+	import { trapFocus } from './actions.svelte';
 
 	interface EditDialogProps {
 		onclose: () => void;
@@ -14,7 +15,8 @@
 </script>
 
 <div
-transition:fly={{ y: -5, duration: 100 }}
+	use:trapFocus
+	transition:fly={{ y: -5, duration: 100 }}
 	role="presentation"
 	class="absolute left-[50%] top-[4.5rem] z-40 -translate-x-[50%] rounded-md border border-border bg-background p-1"
 >
