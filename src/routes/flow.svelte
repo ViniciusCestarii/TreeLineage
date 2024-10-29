@@ -51,7 +51,7 @@
 
 	const defaultEdgeOptions: Partial<Edge> = {
 		type: 'straight',
-    style: 'stroke-width: 2px; margin-top: 1rem'
+		style: 'stroke-width: 2px; margin-top: 1rem'
 	};
 </script>
 
