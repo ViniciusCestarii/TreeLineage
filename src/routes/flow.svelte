@@ -6,7 +6,7 @@
 		MiniMap,
 		BackgroundVariant,
 		type Edge,
-		Controls,
+		Controls
 	} from '@xyflow/svelte';
 
 	import '@xyflow/svelte/dist/style.css';
@@ -43,7 +43,7 @@
 	let height = $state<number>(0);
 
 	const defaultEdgeOptions: Partial<Edge> = {
-		type: 'straight',
+		type: 'straight'
 	};
 </script>
 
