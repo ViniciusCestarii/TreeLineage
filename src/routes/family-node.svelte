@@ -14,12 +14,12 @@
 
 <div
 	class={cn(
-		'group relative flex w-40 flex-col gap-1 rounded-md border border-border bg-background p-2',
+		'group relative flex w-40 flex-col gap-1 rounded-md border border-border bg-background px-3 pt-2 pb-4',
 		selected && 'border-primary'
 	)}
 >
 	{#if data.death}
-		<div class="absolute left-1 top-1 z-40">
+		<div class="absolute left-1 top-1 z-40" title="Deceased">
 			<LordIcon src="/lord-icon/coffin.json" trigger="hover" state="hover-line" class="size-8" />
 		</div>
 	{/if}
@@ -42,7 +42,7 @@
 			class="h-full w-full"
 		/>
 	</Button>
-	<h2 class="text-center">
+	<h2 class="text-center break-words">
 		{data.name}
 	</h2>
 	<Handle

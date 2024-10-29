@@ -47,6 +47,7 @@
 		{#each genderArray as gender}
 			<label
 				for="{gender.label}-{id}"
+				title={gender.label}
 				class={cn(
 					'size-12 cursor-pointer rounded-md border border-transparent ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2',
 					data.gender === gender.value && 'border border-primary'
