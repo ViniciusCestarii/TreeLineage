@@ -4,7 +4,7 @@
 
 	interface PersonIconProps extends Pick<FamilyNodeDataType, 'gender' | 'birthDate'> {}
 
-	const { gender, birthDate }: PersonIconProps = $props();
+	let { gender, birthDate }: PersonIconProps = $props();
 
 	type LifePhase = 'baby' | 'child' | 'adult';
 

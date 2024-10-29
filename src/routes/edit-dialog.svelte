@@ -11,7 +11,7 @@
 		id: FamilyNodeType['id'];
 	}
 
-	const { id, onclose }: EditDialogProps = $props();
+	let { id, onclose }: EditDialogProps = $props();
 </script>
 
 <div

@@ -10,7 +10,7 @@
 		class?: string;
 	}
 
-	const { class: className, ...props }: LordIconProps = $props();
+	let { class: className, ...props }: LordIconProps = $props();
 
 	const getColor = (mode: string | undefined) => (mode === 'dark' ? '#EFEFEF' : '#545454');
 

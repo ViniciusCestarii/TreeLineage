@@ -12,7 +12,7 @@
 		onsubmit: (evt: Event) => void;
 	}
 
-	const { id, onsubmit }: FamilyNodeEditFormProps = $props();
+	let { id, onsubmit }: FamilyNodeEditFormProps = $props();
 
 	const { updateNodeData, getNode } = useSvelteFlow();
 

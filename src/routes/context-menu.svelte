@@ -16,7 +16,7 @@
 		onClick: () => void;
 	}
 
-	const { bottom, id, left, onClick, right, top }: NodeContextMenuProps = $props();
+	let { bottom, id, left, onClick, right, top }: NodeContextMenuProps = $props();
 
 	const nodes = useNodes();
 	const edges = useEdges();

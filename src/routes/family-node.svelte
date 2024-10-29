@@ -9,7 +9,7 @@
 
 	interface FamilyNodeProps extends NodeProps<FamilyNodeType> {}
 
-	const { data, selected, id }: FamilyNodeProps = $props();
+	let { data, selected, id }: FamilyNodeProps = $props();
 </script>
 
 <div
