@@ -51,6 +51,8 @@
 		{edges}
 		{nodeTypes}
 		{viewport}
+		maxZoom={2}
+		minZoom={0.3}
 		colorMode={$mode ?? 'light'}
 		ondelete={(deleted) => {
 			deleted.nodes.some((node) => node.id == editDialog.id) && (editDialog.id = null);
