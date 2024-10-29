@@ -63,7 +63,7 @@
 		{nodeTypes}
 		{viewport}
 		maxZoom={2}
-		minZoom={0.3}
+		minZoom={0.15}
 		{defaultEdgeOptions}
 		colorMode={$mode ?? 'light'}
 		ondelete={(deleted) => {
