@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
+	import LordIcon from '$lib/components/ui/lord-icon.svelte';
 	import FamilyNodeEditForm from './family-node-edit-form.svelte';
 	import type { FamilyNodeType } from './types';
 
@@ -30,11 +31,10 @@
 	aria-label="close edit menu"
 	onclick={onclose}
 >
-	<lord-icon
+	<LordIcon
 		src="https://cdn.lordicon.com/nqtddedc.json"
 		trigger="hover"
 		animation="hover-cross-1"
-		colors="primary:#545454,secondary:#545454"
 		class="h-full w-full"
-	></lord-icon>
+	></LordIcon>
 </Button>

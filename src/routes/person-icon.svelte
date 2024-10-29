@@ -1,5 +1,7 @@
 <script lang="ts">
+	import { mode } from 'mode-watcher';
 	import type { FamilyNodeDataType } from './types';
+	import LordIcon from '$lib/components/ui/lord-icon.svelte';
 
 	interface PersonIconProps extends Pick<FamilyNodeDataType, 'gender' | 'birthDate'> {}
 
@@ -7,29 +9,14 @@
 </script>
 
 {#if gender === 'M'}
-	<lord-icon
-		src="https://cdn.lordicon.com/shcfcebj.json"
-		trigger="hover"
-		state="hover-jump"
-		colors="primary:#545454,secondary:#545454"
-		class="h-full w-full"
-	>
-	</lord-icon>
+	<LordIcon src="https://cdn.lordicon.com/shcfcebj.json" trigger="hover" state="hover-jump" />
 {:else if gender === 'F'}
-	<lord-icon
+	<LordIcon
 		src="https://cdn.lordicon.com/ugejbvui.json"
 		trigger="hover"
 		state="hover-jump"
-		colors="primary:#545454,secondary:#545454"
 		class="h-full w-full"
-	>
-	</lord-icon>
+	/>
 {:else}
-	<lord-icon
-		src="https://cdn.lordicon.com/kdduutaw.json"
-		trigger="hover"
-		colors="primary:#545454,secondary:#545454"
-		class="h-full w-full"
-	>
-	</lord-icon>
+	<LordIcon src="https://cdn.lordicon.com/kdduutaw.json" trigger="hover" class="h-full w-full" />
 {/if}

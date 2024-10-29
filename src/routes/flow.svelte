@@ -41,7 +41,6 @@
 
 	let width = $state<number>(0);
 	let height = $state<number>(0);
-	$inspect($mode);
 </script>
 
 <svelte:window />

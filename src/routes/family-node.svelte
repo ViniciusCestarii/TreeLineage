@@ -5,6 +5,7 @@
 	import PersonIcon from './person-icon.svelte';
 	import { editDialog } from './state.svelte';
 	import { cn } from '$lib/utils';
+	import LordIcon from '$lib/components/ui/lord-icon.svelte';
 
 	interface FamilyNodeProps extends NodeProps<FamilyNodeType> {}
 
@@ -14,7 +15,7 @@
 <div
 	class={cn(
 		'group relative flex w-40 flex-col gap-1 rounded-md border border-border bg-background p-2',
-		selected && 'border-red-600'
+		selected && 'border-primary'
 	)}
 >
 	<div class="mx-auto size-20">
@@ -27,14 +28,12 @@
 		aria-label="edit person {data.name}"
 		onclick={() => (editDialog.id === id ? (editDialog.id = null) : (editDialog.id = id))}
 	>
-		<lord-icon
+		<LordIcon
 			src="https://cdn.lordicon.com/exymduqj.json"
 			trigger="hover"
 			state="hover-line"
-			colors="primary:#545454,secondary:#545454"
 			class="h-full w-full"
-		>
-		</lord-icon>
+		/>
 	</Button>
 	<h2 class="text-center">
 		{data.name}
