@@ -20,8 +20,11 @@
 	role="presentation"
 	class="absolute left-[50%] top-[4.5rem] z-40 -translate-x-[50%] rounded-md border border-border bg-background p-1"
 >
+<span class="absolute -top-4 text-sm left-0">
+	Node: {id}
+</span>
 	<Button
-		class="absolute -top-3 left-[50%] z-50 size-6 -translate-x-[50%] rounded-full bg-background"
+		class="absolute -top-3 -right-5 z-50 size-6 -translate-x-[50%] rounded-full bg-background"
 		variant="ghost"
 		size="icon-xs"
 		aria-label="close edit menu"
