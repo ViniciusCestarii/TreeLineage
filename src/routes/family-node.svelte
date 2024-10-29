@@ -45,6 +45,14 @@
 	<h2 class="text-center">
 		{data.name}
 	</h2>
-	<Handle type="target" position={Position.Top} class="!size-10 !rounded-md !border-none !bg-transparent" />
-	<Handle type="source" position={Position.Bottom} class="!h-4 !w-8 !rounded-md !bg-foreground/75" />
+	<Handle
+		type="target"
+		position={Position.Top}
+		class="!size-10 !rounded-md !border-none !bg-transparent"
+	/>
+	<Handle
+		type="source"
+		position={Position.Bottom}
+		class="!h-4 !w-8 !rounded-md !bg-foreground/75"
+	/>
 </div>
