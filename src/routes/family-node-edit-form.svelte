@@ -4,6 +4,9 @@
 	import { RadioGroup, RadioGroupItem } from '$lib/components/ui/radio-group';
 	import PersonIcon from './person-icon.svelte';
 	import { cn } from '$lib/utils';
+	import { Input } from '$lib/components/ui/input';
+	import { Checkbox } from '$lib/components/ui/checkbox';
+	import { Label } from '$lib/components/ui/label';
 
 	interface FamilyNodeEditFormProps extends Pick<FamilyNodeType, 'id'> {
 		onsubmit: (evt: Event) => void;
@@ -32,9 +35,9 @@
 	};
 </script>
 
-<form {onsubmit} class="flex flex-col items-center">
+<form {onsubmit} class="flex flex-col gap-3 p-2">
 	<RadioGroup
-		class="flex"
+		class="flex mx-auto"
 		value={data.gender}
 		onValueChange={(value) =>
 			updateData({
@@ -43,7 +46,7 @@
 	>
 		{#each genderArray as gender}
 			<label
-				for={gender.label}
+				for="{gender.label}-{id}"
 				class={cn(
 					'size-12 cursor-pointer rounded-md border border-transparent',
 					data.gender === gender.value && 'border border-primary'
@@ -51,13 +54,43 @@
 			>
 				<PersonIcon gender={gender.value} birthDate={data.birthDate} />
 			</label>
-			<RadioGroupItem id={gender.label} value={gender.value} class="sr-only" />
+			<RadioGroupItem id="{gender.label}-{id}" value={gender.value} class="sr-only" />
 		{/each}
 	</RadioGroup>
-	<input
+	<Label for="name-{id}" class="sr-only">
+		Name
+	</Label>
+	<Input
 		id="name-{id}"
-		placeholder="name"
+		placeholder="Name"
 		bind:value={data.name}
 		oninput={(evt) => updateNodeData(id, { name: evt.currentTarget.value })}
 	/>
+	<div class="flex flex-col gap-1">
+	<Label for="birthDate-{id}">
+		Birth Date
+	</Label>
+	<Input
+		id="birthDate-{id}"
+		placeholder="birth date"
+		type="date"
+		bind:value={data.birthDate}
+		oninput={(evt) => updateNodeData(id, { birthDate: evt.currentTarget.value })}
+	/>
+</div>
+
+	<div class="flex items-center space-x-2">
+		<Checkbox
+			id="isDead-{id}"
+			checked={!!data.death}
+			onCheckedChange={(value) => updateNodeData(id, { death: value ? {} : undefined })}
+		/>
+		<Label
+			id="terms-label"
+			for="isDead-{id}"
+			class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+		>
+			Deceased
+		</Label>
+	</div>
 </form>

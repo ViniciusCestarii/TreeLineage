@@ -18,6 +18,16 @@
 		selected && 'border-primary'
 	)}
 >
+	{#if data.death}
+		<div class="absolute top-1 left-1 z-40">
+			<LordIcon
+				src="/lord-icon/coffin.json"
+				trigger="hover"
+				state="hover-line"
+				class="size-7"
+			/>
+		</div>
+	{/if}
 	<div class="mx-auto size-20">
 		<PersonIcon {...data} />
 	</div>

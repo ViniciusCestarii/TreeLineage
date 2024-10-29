@@ -12,6 +12,9 @@ export interface FamilyNodeType extends Node {
 		name: string;
 		gender: (typeof genderArray)[number]['value'];
 		birthDate?: string;
+		death?: {
+			date?: string;
+		}
 	};
 }
 
