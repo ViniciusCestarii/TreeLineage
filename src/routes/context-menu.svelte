@@ -5,6 +5,7 @@
 	import { Separator } from '$lib/components/ui/separator';
 	import { editDialog } from './state.svelte';
 	import { useSvelteFlow } from '@xyflow/svelte';
+	import { fade } from 'svelte/transition';
 
 	interface NodeContextMenuProps {
 		id: string;
@@ -58,6 +59,7 @@
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <div
+	transition:fade={{ duration: 100 }}
 	style="top: {top}px; left: {left}px; right: {right}px; bottom: {bottom}px;"
 	class="absolute z-10 rounded-md border border-border bg-background"
 	onclick={onClick}
