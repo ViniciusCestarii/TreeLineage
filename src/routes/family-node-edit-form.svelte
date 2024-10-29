@@ -57,13 +57,15 @@
 			<RadioGroupItem id="{gender.label}-{id}" value={gender.value} class="sr-only" />
 		{/each}
 	</RadioGroup>
-	<Label for="name-{id}" class="sr-only">Name</Label>
-	<Input
-		id="name-{id}"
-		placeholder="Name"
-		bind:value={data.name}
-		oninput={(evt) => updateNodeData(id, { name: evt.currentTarget.value })}
-	/>
+	<div class="flex flex-col gap-1">
+		<Label for="name-{id}">Name</Label>
+		<Input
+			id="name-{id}"
+			placeholder="Person name"
+			bind:value={data.name}
+			oninput={(evt) => updateNodeData(id, { name: evt.currentTarget.value })}
+		/>
+	</div>
 	<div class="flex flex-col gap-1">
 		<Label for="birthDate-{id}">Birth Date</Label>
 		<Input

@@ -20,7 +20,7 @@
 >
 	{#if data.death}
 		<div class="absolute left-1 top-1 z-40">
-			<LordIcon src="/lord-icon/coffin.json" trigger="hover" state="hover-line" class="size-7" />
+			<LordIcon src="/lord-icon/coffin.json" trigger="hover" state="hover-line" class="size-8" />
 		</div>
 	{/if}
 	<div class="mx-auto size-20">
@@ -43,6 +43,6 @@
 	<h2 class="text-center">
 		{data.name}
 	</h2>
-	<Handle type="target" position={Position.Top} />
-	<Handle type="source" position={Position.Bottom} />
+	<Handle type="target" position={Position.Top} class="!size-3 !bg-foreground/75" />
+	<Handle type="source" position={Position.Bottom} class="!size-3 !bg-foreground/75" />
 </div>
