@@ -4,7 +4,11 @@ export function trapFocus(node) {
 	const previous = document.activeElement;
 
 	function focusable() {
-		return Array.from(node.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'));
+		return Array.from(
+			node.querySelectorAll(
+				'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+			)
+		);
 	}
 
 	function handleKeydown(event) {
@@ -14,7 +18,7 @@ export function trapFocus(node) {
 
 		const elements = focusable();
 		const first = elements.at(0);
-		const last = elements.at(-1)
+		const last = elements.at(-1);
 
 		if (event.shiftKey && current === first) {
 			last.focus();

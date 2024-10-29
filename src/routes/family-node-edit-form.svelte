@@ -48,13 +48,13 @@
 			<label
 				for="{gender.label}-{id}"
 				class={cn(
-					'size-12 cursor-pointer rounded-md border border-transparent ring-offset-background focus-within:ring-ring focus-within:ring-2 focus-within:ring-offset-2',
+					'size-12 cursor-pointer rounded-md border border-transparent ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2',
 					data.gender === gender.value && 'border border-primary'
 				)}
 			>
 				<PersonIcon gender={gender.value} birthDate={data.birthDate} />
-			<RadioGroupItem id="{gender.label}-{id}" value={gender.value} class="sr-only" />
-		</label>
+				<RadioGroupItem id="{gender.label}-{id}" value={gender.value} class="sr-only" />
+			</label>
 		{/each}
 	</RadioGroup>
 	<div class="flex flex-col gap-1">
