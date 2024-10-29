@@ -23,8 +23,10 @@
 			<LordIcon src="/lord-icon/coffin.json" trigger="hover" state="hover-line" class="size-8" />
 		</div>
 	{/if}
-	<div class="mx-auto size-20">
-		<PersonIcon {...data} />
+	<div class="flex justify-center">
+		<div class="size-20">
+			<PersonIcon {...data} />
+		</div>
 	</div>
 	<Button
 		class="absolute right-0 top-0 z-10 hidden border-r-0 border-t-0 group-hover:block"
