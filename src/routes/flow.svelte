@@ -38,12 +38,13 @@
 	});
 	nodes.subscribe((value) => {
 		saveToLocalStorage('nodes', value);
-		
+
 		const selectedNode = value.find((node) => node.selected === true);
 		if (selectedNode && editDialog.id) {
 			editDialog.id = selectedNode.id;
 		}
-	});	edges.subscribe((value) => saveToLocalStorage('edges', value));
+	});
+	edges.subscribe((value) => saveToLocalStorage('edges', value));
 
 	let width = $state<number>(0);
 	let height = $state<number>(0);
