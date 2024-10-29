@@ -14,7 +14,7 @@ export interface FamilyNodeType extends Node {
 		birthDate?: string;
 		death?: {
 			date?: string;
-		}
+		};
 	};
 }
 

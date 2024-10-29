@@ -37,7 +37,7 @@
 
 <form {onsubmit} class="flex flex-col gap-3 p-2">
 	<RadioGroup
-		class="flex mx-auto"
+		class="mx-auto flex"
 		value={data.gender}
 		onValueChange={(value) =>
 			updateData({
@@ -57,9 +57,7 @@
 			<RadioGroupItem id="{gender.label}-{id}" value={gender.value} class="sr-only" />
 		{/each}
 	</RadioGroup>
-	<Label for="name-{id}" class="sr-only">
-		Name
-	</Label>
+	<Label for="name-{id}" class="sr-only">Name</Label>
 	<Input
 		id="name-{id}"
 		placeholder="Name"
@@ -67,17 +65,15 @@
 		oninput={(evt) => updateNodeData(id, { name: evt.currentTarget.value })}
 	/>
 	<div class="flex flex-col gap-1">
-	<Label for="birthDate-{id}">
-		Birth Date
-	</Label>
-	<Input
-		id="birthDate-{id}"
-		placeholder="birth date"
-		type="date"
-		bind:value={data.birthDate}
-		oninput={(evt) => updateNodeData(id, { birthDate: evt.currentTarget.value })}
-	/>
-</div>
+		<Label for="birthDate-{id}">Birth Date</Label>
+		<Input
+			id="birthDate-{id}"
+			placeholder="birth date"
+			type="date"
+			bind:value={data.birthDate}
+			oninput={(evt) => updateNodeData(id, { birthDate: evt.currentTarget.value })}
+		/>
+	</div>
 
 	<div class="flex items-center space-x-2">
 		<Checkbox
