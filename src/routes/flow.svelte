@@ -6,7 +6,7 @@
 		MiniMap,
 		BackgroundVariant,
 		type Edge,
-		Controls
+		Controls,
 	} from '@xyflow/svelte';
 
 	import '@xyflow/svelte/dist/style.css';
@@ -41,6 +41,10 @@
 
 	let width = $state<number>(0);
 	let height = $state<number>(0);
+
+	const defaultEdgeOptions: Partial<Edge> = {
+		type: 'straight',
+	};
 </script>
 
 <svelte:window />
@@ -53,6 +57,7 @@
 		{viewport}
 		maxZoom={2}
 		minZoom={0.3}
+		{defaultEdgeOptions}
 		colorMode={$mode ?? 'light'}
 		ondelete={(deleted) => {
 			deleted.nodes.some((node) => node.id == editDialog.id) && (editDialog.id = null);
