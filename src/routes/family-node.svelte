@@ -14,7 +14,7 @@
 
 <div
 	class={cn(
-		'group relative flex w-40 flex-col gap-1 rounded-md border border-border bg-background px-3 pt-2 pb-4',
+		'group relative flex w-40 flex-col gap-1 rounded-md border border-border bg-background px-3 pb-4 pt-2',
 		selected && 'border-primary'
 	)}
 >
@@ -42,7 +42,7 @@
 			class="h-full w-full"
 		/>
 	</Button>
-	<h2 class="text-center break-words">
+	<h2 class="break-words text-center">
 		{data.name}
 	</h2>
 	<Handle
