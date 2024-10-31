@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { io } from 'socket.io-client';
 	import ThemeSwitch from '$lib/components/theme-switch.svelte';
-  import { env } from '$env/dynamic/public';
+	import { env } from '$env/dynamic/public';
 
 	let dotPositions: Array<{ x: number; y: number }> = $state([]);
 	let lastSentTime = $state(0);
