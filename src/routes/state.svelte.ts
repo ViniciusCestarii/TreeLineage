@@ -8,9 +8,17 @@ export const viewport = $state<Viewport>({
 });
 
 interface EditableNode {
-	id: FamilyNodeType['id'] | null;
+	id?: FamilyNodeType['id']
 }
 
-export const editDialog = $state<EditableNode>({
-	id: null
-});
+export const editDialog = $state<EditableNode>({});
+
+interface FlowEvents {
+	connectingLine: {
+		target?: FamilyNodeType['id'];
+	};
+}
+
+export const events = $state<FlowEvents>({
+	connectingLine: {}
+})

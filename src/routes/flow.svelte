@@ -14,7 +14,7 @@
 	import { type FamilyNodeType, nodeTypes } from './types';
 	import ContextMenu from './context-menu.svelte';
 	import { menuStore } from './menu-store';
-	import { editDialog, viewport as viewportStore } from './state.svelte';
+	import { editDialog, events, viewport as viewportStore } from './state.svelte';
 	import { loadFromLocalStorage, saveToLocalStorage } from './utils';
 	import EditDialog from './edit-dialog.svelte';
 
@@ -66,10 +66,19 @@
 		maxZoom={2}
 		minZoom={0.15}
 		connectionLineStyle="stroke-width: 2px;"
+		onconnectstart={(connectStart) => {
+			const target = connectStart?.target as any
+			events.connectingLine.target = target?.__attributes?.["data-nodeid"] as string | null ?? undefined
+			editDialog.id = undefined;
+			menuStore.close();
+		}}
+		onconnectend={() => {
+			events.connectingLine.target = undefined
+		}}
 		{defaultEdgeOptions}
 		colorMode={$mode ?? 'light'}
 		ondelete={(deleted) => {
-			deleted.nodes.some((node) => node.id == editDialog.id) && (editDialog.id = null);
+			deleted.nodes.some((node) => node.id == editDialog.id) && (editDialog.id = undefined);
 		}}
 		on:nodecontextmenu={({ detail: { event, node } }) => {
 			const hasCoords = 'clientX' in event;
@@ -81,7 +90,7 @@
 		}}
 		on:paneclick={() => {
 			menuStore.close();
-			editDialog.id = null;
+			editDialog.id = undefined;
 		}}
 	>
 		<Controls />
@@ -98,7 +107,7 @@
 			/>
 		{/if}
 		{#if editDialog.id}
-			<EditDialog id={editDialog.id} onclose={() => (editDialog.id = null)} />
+			<EditDialog id={editDialog.id} onclose={() => (editDialog.id = undefined)} />
 		{/if}
 	</SvelteFlow>
 </div>

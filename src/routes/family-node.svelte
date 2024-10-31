@@ -3,7 +3,7 @@
 	import { type FamilyNodeType } from './types';
 	import { Button } from '$lib/components/ui/button';
 	import PersonIcon from './person-icon.svelte';
-	import { editDialog } from './state.svelte';
+	import { editDialog, events } from './state.svelte';
 	import { cn } from '$lib/utils';
 	import LordIcon from '$lib/components/ui/lord-icon.svelte';
 
@@ -33,7 +33,7 @@
 		variant="outline"
 		size="icon-xs"
 		aria-label="edit person {data.name}"
-		onclick={() => (editDialog.id === id ? (editDialog.id = null) : (editDialog.id = id))}
+		onclick={() => (editDialog.id === id ? (editDialog.id = undefined) : (editDialog.id = id))}
 	>
 		<LordIcon
 			src="https://cdn.lordicon.com/exymduqj.json"
@@ -46,9 +46,13 @@
 		{data.name}
 	</h2>
 	<Handle
+		isConnectable={!!events.connectingLine.target && events.connectingLine.target !== id}
 		type="target"
 		position={Position.Top}
-		class="mt-4 !size-10 !rounded-md !border-none !bg-transparent"
+		class={cn(
+			'mt-4 !size-10 !rounded-md !border-none !bg-transparent before:hidden before:size-5 before:bg-foreground/75 before:rounded-full before:absolute before:top-0 before:left-1/2 before:transform before:-translate-x-1/2 before:z-10',
+			events.connectingLine.target && events.connectingLine.target !== id && 'before:block before:animate-pulse'
+		)}
 	/>
 	<Handle
 		type="source"
