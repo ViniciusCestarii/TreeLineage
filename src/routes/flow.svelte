@@ -67,13 +67,14 @@
 		minZoom={0.15}
 		connectionLineStyle="stroke-width: 2px;"
 		onconnectstart={(connectStart) => {
-			const target = connectStart?.target as any
-			events.connectingLine.target = target?.__attributes?.["data-nodeid"] as string | null ?? undefined
+			const target = connectStart?.target as any;
+			events.connectingLine.target =
+				(target?.__attributes?.['data-nodeid'] as string | null) ?? undefined;
 			editDialog.id = undefined;
 			menuStore.close();
 		}}
 		onconnectend={() => {
-			events.connectingLine.target = undefined
+			events.connectingLine.target = undefined;
 		}}
 		{defaultEdgeOptions}
 		colorMode={$mode ?? 'light'}

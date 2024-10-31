@@ -8,7 +8,7 @@ export const viewport = $state<Viewport>({
 });
 
 interface EditableNode {
-	id?: FamilyNodeType['id']
+	id?: FamilyNodeType['id'];
 }
 
 export const editDialog = $state<EditableNode>({});
@@ -21,4 +21,4 @@ interface FlowEvents {
 
 export const events = $state<FlowEvents>({
 	connectingLine: {}
-})
+});

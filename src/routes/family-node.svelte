@@ -50,8 +50,10 @@
 		type="target"
 		position={Position.Top}
 		class={cn(
-			'mt-4 !size-10 !rounded-md !border-none !bg-transparent before:hidden before:size-5 before:bg-foreground/75 before:rounded-full before:absolute before:top-0 before:left-1/2 before:transform before:-translate-x-1/2 before:z-10',
-			events.connectingLine.target && events.connectingLine.target !== id && 'before:block before:animate-pulse'
+			'mt-4 !size-10 !rounded-md !border-none !bg-transparent before:absolute before:left-1/2 before:top-0 before:z-10 before:hidden before:size-5 before:-translate-x-1/2 before:transform before:rounded-full before:bg-foreground/75',
+			events.connectingLine.target &&
+				events.connectingLine.target !== id &&
+				'before:block before:animate-pulse'
 		)}
 	/>
 	<Handle
