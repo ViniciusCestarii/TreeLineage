@@ -13,7 +13,7 @@ const httpServer = http.createServer((req, res) => {
 	}
 });
 
-const corsOrigins = [process.env.CLIENT_URL ?? 'http://localhost:5173', 'http://localhost:5173'];
+const corsOrigins = [process.env.CLIENT_URL ?? 'http://localhost:5173'];
 console.log(`cors origins: `, corsOrigins);
 
 const io = new Server(httpServer, {

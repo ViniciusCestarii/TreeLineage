@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { io } from 'socket.io-client';
 	import ThemeSwitch from '$lib/components/theme-switch.svelte';
+  import { env } from '$env/dynamic/public';
 
 	let dotPositions: Array<{ x: number; y: number }> = $state([]);
 	let lastSentTime = $state(0);
@@ -9,7 +10,7 @@
 	const sendInterval = 100;
 
 	onMount(() => {
-		const socket = io('http://localhost:3001');
+		const socket = io(env.PUBLIC_SERVER_URL, { secure: true });
 
 		const handleMouseMove = (event: MouseEvent) => {
 			const mouseData = {
