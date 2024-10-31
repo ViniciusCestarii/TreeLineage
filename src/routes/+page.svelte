@@ -3,6 +3,7 @@
 	import Flow from './flow.svelte';
 	import { browser } from '$app/environment';
 	import Header from './header.svelte';
+	import Collab from './collab.svelte';
 </script>
 
 <svelte:head>
@@ -13,6 +14,7 @@
 	{/if}
 </svelte:head>
 
+<Collab />
 <SvelteFlowProvider>
 	<Header />
 	<Flow />

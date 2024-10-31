@@ -10,6 +10,7 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
+		"server": "node --loader ts-node/esm src/server.ts",
 		"prepare": "husky"
 	},
 	"devDependencies": {
@@ -40,7 +41,10 @@
 		"clsx": "^2.1.1",
 		"html-to-image": "^1.11.11",
 		"mode-watcher": "^0.4.1",
+		"socket.io": "^4.8.1",
+		"socket.io-client": "^4.8.1",
 		"tailwind-variants": "^0.2.1",
-		"tailwindcss-animate": "^1.0.7"
+		"tailwindcss-animate": "^1.0.7",
+		"ts-node": "^10.9.2"
 	}
 }
